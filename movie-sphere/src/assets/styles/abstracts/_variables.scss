@@ -7,12 +7,12 @@ $white: #fff;
 $black: #000;
 $black-02: #1e1e1e;
 
-$yellow: #dfc01f;
+$red-01: #9e0808;
 
 $primary: $black;
-$secondary: $yellow;
+$secondary: $white;
 
-$body-bg: $white;
+$body-bg: $primary;
 
 // font/typography
 $font-family-primary: 'Inter', sans-serif;
@@ -27,9 +27,6 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $font-weight-heavy: 800;
 $font-weight-black: 900;
-
-
-// link reset
 
 // $link-color: $secondary;
 $link-decoration: none;

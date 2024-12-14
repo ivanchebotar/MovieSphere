@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the forms of the site
+// -----------------------------------------------------------------------------
+
+input {
+  @include transition(border width);
+  outline: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 10px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid rgba($secondary, 0.5);
+  color: $secondary;
+  font-size: 14px;
+
+  &:focus,
+  &:hover {
+    border-color: $secondary;
+  }
+}
+

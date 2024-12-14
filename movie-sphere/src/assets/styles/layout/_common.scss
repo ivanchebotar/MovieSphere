@@ -1,14 +1,8 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the common of the site
 // -----------------------------------------------------------------------------
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  min-height: 100vh;
-  overflow: hidden;
-	position: relative;
-  width: 100%;
+body {
+  background-color: $primary;
 }
 
 .page-holder {

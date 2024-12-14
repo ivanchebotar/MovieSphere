@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the basic-resets of the site
+// -----------------------------------------------------------------------------
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+button, 
+select, 
+input, 
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}

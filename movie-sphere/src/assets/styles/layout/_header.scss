@@ -3,4 +3,19 @@
 // -----------------------------------------------------------------------------
 .header {
   flex: 0 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 20px 0;
+}
+
+.header-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
 }

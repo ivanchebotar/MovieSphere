@@ -1,26 +1,26 @@
 <template>
   <SiteHeader />
-
+  <SiteHeroSection />
 </template>
 
 <script>
-import SiteHeader from './components/SiteHeader.vue'
+import SiteHeader from "./components/SiteHeader.vue";
+import SiteHeroSection from "./components/SiteHeroSection.vue";
 
 export default {
   name: 'App',
   components: {
     SiteHeader,
+    SiteHeroSection
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-family-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: $body-bg;
 }
 </style>

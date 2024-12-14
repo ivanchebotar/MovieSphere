@@ -1,9 +1,13 @@
 // abstracts
+@import "abstracts/basic-reset.scss";
 @import "abstracts/variables.scss";
 @import "abstracts/mixins.scss";
 
 
 // components
+@import "components/buttons.scss";
+@import "components/forms.scss";
+@import "components/typography.scss";
 
 
 // layout
