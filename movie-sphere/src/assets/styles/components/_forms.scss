@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 input {
-  @include transition(border width);
+  @include transition(border width color);
   outline: none;
   background-image: none;
   background-color: transparent;
@@ -16,10 +16,27 @@ input {
   border-bottom: 2px solid rgba($secondary, 0.5);
   color: $secondary;
   font-size: 14px;
+  display: block;
+  width: 100%;
 
   &:focus,
   &:hover {
     border-color: $secondary;
+
+  }
+  
+  &:focus {
+    &::placeholder {
+      color: rgba($secondary, 0.5);
+    }
+  }
+  
+  &::placeholder {
+    color: $secondary;
+    display: block;
+    font-size: 14px;
+    padding: 10px 0;
   }
 }
+
 

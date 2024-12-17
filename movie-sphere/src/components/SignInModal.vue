@@ -5,12 +5,10 @@
       <div class="form">
         <form @submit.prevent="handleSignIn">
           <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="email" required />
+            <input type="email" id="email" placeholder="Email:" v-model="email" required />
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" v-model="password" required />
+            <input type="password" id="password" placeholder="Password:" v-model="password" required />
           </div>
           <button type="submit" class="btn btn--primary">Sign In</button>
           <button type="button" @click="closeModal" class="btn btn--primary">Cancel</button>
@@ -61,13 +59,32 @@ export default {
 }
 
 .modal {
-  background-image: url('@/assets/images/img01.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 2rem;
+  padding: 40px 40px 50px;
   border-radius: 8px;
   width: 400px;
   max-width: 90%;
+  color: $secondary;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background-image: url(@/assets/images/img01.svg);
+    background-position: 0 0;
+    z-index: -1;
+    background-color: rgba($secondary, 0.2);
+    border-radius: 10px;
+  }
 }
 
 .form-group {
