@@ -12,7 +12,13 @@ button,
   border-radius: 4px;
   color: $secondary;
   font-weight: $font-weight-medium;
+  font-size: 14px;
+  line-height: 1;
   cursor: pointer;
+
+  @include media('>=desktop') {
+    font-size: 16px;
+  }
 
   &--primary {
     background-color: $red-01;

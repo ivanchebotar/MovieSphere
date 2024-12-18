@@ -27,37 +27,27 @@ ul {
 
 h1, .h1 {
   font-size: 35px;
-  color: $white;
-  font-weight: $font-weight-medium;
+  color: $secondary;
+  font-weight: $font-weight-bold;
   line-height: 1.4;
   padding: 0;
   margin: 0 0 20px;
 
-  @include media('>=tablet') {
-    font-size: 40px;
-  }
-
   @include media('>=md-desktop') {
-    font-size: 70px;
+    font-size: 40px;
   }
 }
 
 h2, .h2 {
-  font-size: 30px;
-  color: $primary;
-  font-weight: $font-weight-semibold;
+  font-size: 25px;
+  color: $secondary;
+  font-weight: $font-weight-bold;
   line-height: 1.4;
   padding: 0;
   margin: 0 0 20px;
 
-  @include media('>=tablet') {
-    margin: 0 0 30px;
-    font-size: 40px;
-  }
-
-  @include media('>=md-desktop') {
-    margin: 0 0 50px;
-    font-size: 50px;
+  @include media('>=desktop') {
+    font-size: 30px;
   }
 }
 
@@ -87,17 +77,22 @@ h6 {
 }
 
 p, .p {
-  font-size: 16px;
-  color: $primary;
+  font-size: 14px;
+  color: $secondary;
   line-height: 1.6;
   padding: 0;
   margin: 0 0 20px;
 
-  @include media('>=tablet') {
+  @include media('>=desktop') {
     font-size: 16px;
   }
 
-  @include media('>=desktop') {
-    font-size: 18px;
+  a {
+    font-weight: $font-weight-semibold;
+    color: $secondary;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

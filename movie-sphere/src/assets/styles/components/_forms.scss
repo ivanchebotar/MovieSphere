@@ -19,6 +19,10 @@ input {
   display: block;
   width: 100%;
 
+  @include media('>=desktop') {
+    font-size: 16px;
+  }
+
   &:focus,
   &:hover {
     border-color: $secondary;
@@ -36,6 +40,10 @@ input {
     display: block;
     font-size: 14px;
     padding: 10px 0;
+
+    @include media('>=desktop') {
+      font-size: 16px;
+    }
   }
 }
 
