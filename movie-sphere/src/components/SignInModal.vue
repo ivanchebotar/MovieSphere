@@ -61,7 +61,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($primary, 0.5);
+  background-color: rgba($primary, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,10 +92,9 @@ export default {
     height: 100%;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
-    background-image: url(@/assets/images/img01.svg);
     background-position: 0 0;
     z-index: -1;
-    background-color: rgba($secondary, 0.2);
+    background-color: rgba($secondary, 0.1);
     border-radius: 10px;
   }
 

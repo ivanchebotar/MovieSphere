@@ -33,5 +33,9 @@ button,
     font-size: 0;
     padding: 10px;
     border-radius: $rounded-circle;
+
+    &:hover {
+      background-color: rgba($red-01, 0.5);
+    }
   }
 }
