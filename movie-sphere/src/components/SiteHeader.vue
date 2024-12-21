@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <div class="container">
+    <div class="container container--fluid">
       <div class="header-holder">
-        <div class="logo">
+        <router-link to="/" class="logo">
           <a href="#" class="logo-link">
             <img src="./../assets/images/logo.svg" alt="MovieSphere Logo">
           </a>
-        </div>
+        </router-link>
         <div class="account">
           <button class="btn btn--primary btn--round" @click="toggleModal">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

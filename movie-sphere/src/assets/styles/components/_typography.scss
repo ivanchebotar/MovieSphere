@@ -26,14 +26,14 @@ ul {
 
 
 h1, .h1 {
-  font-size: 35px;
+  font-size: 28px;
   color: $secondary;
   font-weight: $font-weight-bold;
   line-height: 1.4;
   padding: 0;
   margin: 0 0 20px;
 
-  @include media('>=md-desktop') {
+  @include media('>=desktop') {
     font-size: 40px;
   }
 }
@@ -52,18 +52,14 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 20px;
-  color: $primary;
+  font-size: 18px;
+  color: $secondary;
   line-height: 1.4;
   padding: 0;
   margin: 0 0 20px;
 
-  @include media('>=tablet') {
-    font-size: 25px;
-  }
-
   @include media('>=desktop') {
-    font-size: 45px;
+    font-size: 20px;
   }
 }
 

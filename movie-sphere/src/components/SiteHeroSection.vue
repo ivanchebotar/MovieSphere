@@ -44,6 +44,7 @@ video {
   text-align: center;
   width: 100%;
   max-width: 800px;
+  padding: 0 20px;
 
   h1 {
     margin: 0 0 60px;

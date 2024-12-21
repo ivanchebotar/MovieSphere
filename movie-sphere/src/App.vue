@@ -1,17 +1,19 @@
 <template>
   <SiteHeader />
-  <SiteHeroSection />
+  <div class="page-holder">
+    <main class="main">
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <script>
 import SiteHeader from "./components/SiteHeader.vue";
-import SiteHeroSection from "./components/SiteHeroSection.vue";
 
 export default {
   name: 'App',
   components: {
     SiteHeader,
-    SiteHeroSection
   }
 }
 </script>
