@@ -1,34 +1,52 @@
 <template>
   <div class="modal-overlay" v-if="isVisible" @click.self="closeModal">
     <div class="modal">
-      <h2>Sign In</h2>
+      <h2>{{ isSignUpMode ? 'Sign Up' : 'Sign In' }}</h2>
       <div class="form">
-        <form @submit.prevent="handleSignIn">
+        <form @submit.prevent="handleSubmit">
           <div class="form-group">
+            <div class="input-group" v-if="isSignUpMode">
+              <input type="text" id="name" placeholder="User name:" v-model="name" required />
+            </div>
             <div class="input-group">
               <input type="email" id="email" placeholder="Email:" v-model="email" required />
             </div>
             <div class="input-group">
-              <input type="password" id="password" placeholder="Password:" v-model="password" required />
+              <input type="password" id="password" placeholder="Password:" v-model="password" required autocomplete="current-password" />
+            </div>
+            <div class="input-group" v-if="isSignUpMode">
+              <input type="password" id="confirmPassword" placeholder="Confirm Password:" v-model="confirmPassword" required autocomplete="new-password" />
             </div>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn--primary">Sign In</button>
-            <button type="button" @click="closeModal" class="btn btn--close">
-              <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683418 -0.0976311 1.31658 -0.0976309 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L8.41421 7L13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071C13.3166 14.0976 12.6834 14.0976 12.2929 13.7071L7 8.41421L1.70711 13.7071C1.31658 14.0976 0.683418 14.0976 0.292893 13.7071C-0.0976311 13.3166 -0.0976311 12.6834 0.292893 12.2929L5.58579 7L0.292893 1.70711C-0.0976311 1.31658 -0.0976309 0.683417 0.292893 0.292893Z" fill="white"/>
-              </svg>
+            <button type="submit" class="btn btn--primary">
+              {{ isSignUpMode ? 'Sign Up' : 'Sign In' }}
             </button>
+            <button type="button" @click="closeModal" class="btn btn--close"></button>
           </div>
         </form>
-        <p>New to MovieSphere? <a href="#">Sign Up</a>.</p>
+
+        <div class="form-group">
+          <button @click="handleGoogleSignIn" class="btn btn--google">
+            Sign in with Google
+          </button>
+        </div>
+
+        <p>
+          {{ isSignUpMode ? 'Already have an account?' : 'New to MovieSphere?' }}
+          <a href="#" @click.prevent="toggleMode">{{ isSignUpMode ? 'Sign In' : 'Sign Up' }}</a>.
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { auth } from "@/assets/js/firebase";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 export default {
+  name: "SignInModal",
   props: {
     isVisible: {
       type: Boolean,
@@ -37,22 +55,83 @@ export default {
   },
   data() {
     return {
+      isSignUpMode: false,
+      name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     };
   },
   methods: {
-    closeModal() {
-      this.$emit("close");
+    toggleMode() {
+      this.isSignUpMode = !this.isSignUpMode;
+      this.clearForm();
     },
-    handleSignIn() {
-      // Handle sign-in logic here
-      console.log(`Signing in with ${this.email} and ${this.password}`);
-      this.closeModal();
+    clearForm() {
+      this.name = "";
+      this.email = "";
+      this.password = "";
+      this.confirmPassword = "";
+    },
+    closeModal() {
+      this.$emit("update:isVisible", false);
+    },
+    async handleSignUp() {
+      console.log("Sign up attempt");
+      if (!this.email || !this.password || !this.confirmPassword) {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      if (this.password !== this.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, this.email, this.password);
+        console.log("User registered:", userCredential.user);
+        this.closeModal();
+      } catch (error) {
+        console.error("Error registering user:", error.message);
+        alert("Error registering user: " + error.message);
+      }
+    },
+
+    async handleSignIn() {
+      console.log("Sign in attempt");
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, this.email, this.password);
+        console.log("User signed in:", userCredential.user);
+        this.closeModal();
+      } catch (error) {
+        console.error("Error signing in:", error.message);
+        alert("Error signing in: " + error.message);
+      }
+    },
+    async handleGoogleSignIn() {
+      const provider = new GoogleAuthProvider();
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        console.log("User signed in with Google:", user);
+        this.closeModal();
+      } catch (error) {
+        console.error("Error signing in with Google:", error.message);
+        alert("Error signing in with Google: " + error.message);
+      }
+    },
+    handleSubmit() {
+      if (this.isSignUpMode) {
+        this.handleSignUp();
+      } else {
+        this.handleSignIn();
+      }
     },
   },
 };
 </script>
+
 
 <style scoped lang="scss">
 .modal-overlay {
@@ -133,5 +212,4 @@ p {
   color: rgba($secondary, 0.8);
   margin: 0;
 }
-
 </style>

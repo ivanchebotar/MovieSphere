@@ -14,7 +14,7 @@
             </svg> 
           </button>
         </div>
-        <SignInModal v-if="isModalVisible" :isVisible="isModalVisible" @close="toggleModal" />
+        <SignInModal :isVisible="isModalVisible" @update:isVisible="isModalVisible = $event" />
       </div>
     </div>
   </header>
